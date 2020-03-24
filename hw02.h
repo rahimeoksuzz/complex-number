@@ -1,9 +1,7 @@
-/*rahime öksüz
- * 18120205018
+/*
  * header
  */
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <stdlib.h>
 
@@ -17,22 +15,27 @@ private:
 	float imag;
 
 public:
-	complex() :real(0), imag(0) {}
-	void input();
-	void output();
-	double getcomplex();          
-	double setcomplex(complex c2);
-	complex operator -(complex c2);
-	complex operator -=(complex c2);
-	complex operator +=(complex c2);
-	complex operator +();
-	complex operator -();
-	complex operator +=(complex c2);
-	complex operator +();
-	complex operator -();
-	complex operator +(complex c2);
-	complex operator /=(complex c2);
-	complex conversion(complex c2);
-	/*  */
+	complex() ; //default constructor
+
+	complex(int val) ; //conversion constructor
+
+	complex(double val) ; //conversion constructor
+
+	complex(string val); //conversion constructor
+
+	complex(double a, double b) ; //İki parametre alan constructor
+	
+	double getReal()const;   //reel değeri tutan özel veri üyelerine erişen fonksiyon 
+	double getImag()const;   //sanal değeri tutan özel veri üyelerine erişen fonksiyon 
+	
+	void setReal(double val);   //reel değeri düzenlemek için fonksiyon  
+	void setImag(double val);   //sanal değeri düzenlemek için fonksiyon  
+	
+	void add(complex &x); //toplama fonksiyonu
+	void subtract(complex &x); // çıkarma fonksiyonu
+    void divide(complex &x); // çarpma fonksiyonu
+
+	void print()const; // print fonksiyonu
+
 	
 };
