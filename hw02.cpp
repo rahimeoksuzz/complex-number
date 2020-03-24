@@ -1,85 +1,72 @@
-/*rahime öksüz
- * 18120205018
+/*
  * karmasik.cpp
  */
- 
+#include <iostream>
 #include "hw02.h"
 using namespace std;
 
-
-void complex::input()
-{
-	cout << "enter real and imaginary part repectively:" << endl;
-	cin >> real;
-	cin >> imag;
+complex::complex() {
+	this->imag = 0;
+	this->real = 0;
 }
 
-complex complex::operator-=(complex c2)
-{
-
-	c2.real -= real;
-	c2.imag -= imag;
-	return c2;
+complex::complex(int val) {
+	this->real = val;
 
 }
-complex complex::operator+()
-{
-	complex c2;
-	complex temp;
-	temp.real = real + c2.real;
-	temp.imag = imag + c2.imag;
-	return temp;
-}
-complex complex::operator+(complex c2)
-{
-	complex temp;
-	temp.real = real + c2.real;
-	temp.imag = imag;
-	return temp;
-}
-/*
-complex complex::operator-()
-{
-	complex c2;
-	complex temp;
-	temp.real = real - c2.real;
-	temp.imag = imag;
-	return temp;
-}
-complex complex::operator-(const complex & c2)
-{
-	complex temp;
-	temp.real = -c2.real;
-	temp.imag = -c2.imag;
-	return temp;
-}*/
-complex complex::operator-(complex c2)
-{
-	complex temp;
-	temp.real = real - c2.real;
-	temp.imag = imag - c2.imag;
-	return temp;
-}
-complex complex::operator+=(complex c2)
-{
 
-	c2.real += real;
-	c2.imag += imag;
-	return c2;
-
+complex::complex(double val) {
+	this->real = val;
 }
-complex complex::operator/=(complex c2)
-{
 
-	c2.real /= real;
-	c2.imag /= imag;
-	return c2;
-
+complex::complex(double a, double b) {
+	this->real = a;
+	this->imag = b;
 }
-void complex::output()
-{
-	if (imag < 0)
-		cout << "output complex number:" << real << imag << "i";
-	else
-		cout << "output complex number:" << real << "+" << imag << "i";
+
+double complex::getReal()const {
+	return real;
+}
+
+double complex::getImag()const {
+	return imag;
+}
+
+void complex::setReal(double val) {
+	this->real = val;
+}
+
+void complex::setImag(double val) {
+	this->imag = val;
+}
+
+void complex::add(complex &x) {
+	this->real += x.real;
+	this->imag += x.imag;
+}
+
+void complex::subtract(complex &x) {
+	this->real -= x.real;
+	this->imag -= x.imag;
+}
+
+void complex::divide(complex &x) {
+	double a = x.real;
+	double b = x.imag;
+	this->real = (real*a - imag * b) / (a*a - b * b);
+	this->imag = (real*b + imag * a) / (a*a - b * b);
+}
+
+
+void complex::print()const {
+	if (real == 0)
+		cout << "complex number:" << getImag() << "i" << endl;
+	else {
+		if (imag < 0)
+			cout << "complex number:" << getReal() << getImag() << "i" << endl;
+		else if (imag == 0)
+			cout << "complex number:" << getReal() << endl;
+		else
+			cout << "complex number:" << getReal() << "+" << getImag() << "i" << endl;
+	}
 }
