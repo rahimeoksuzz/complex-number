@@ -1,2 +1,2 @@
-# homework-2
+# complex-number
 Karmaşık sayıları ifade edebilecek bir sınıf yazımı
